@@ -12,8 +12,67 @@
 </head>
 
 <body class="bg-gray">
-   
+
+    <div class="card-header bg-gray no-border">
+        <h4 class="w-300 text-center">Robot Simulator </h4>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="inputs m-t-30 col-md-6">
+                <div class="col-md-12 form-inline  m-b-10">
+                    <div class="row col-md-12 format-padding">
+                        <div class=" p-l-0  col-md-6">
+                            <span class="text-left">X coordinate</span>
+                            <input type="number" class="x-cord form-control col-md-12" min="0" max="4">
+                        </div>
+                        <div class=" p-l-0 col-md-6">
+                            <span class="text-left">Y coordinate</span>
+                            <input type="number" class="y-cord form-control col-md-12">
+                        </div>
+                    </div>
+
+                    <div class="row col-md-12 format-padding">
+                        <span class="text-left">Direction</span>
+
+                        <select class="direction  form-control col-md-12">
+                            <option value="NORTH" selected="selected">North</option>
+                            <option value="SOUTH">South</option>
+                            <option value="EAST">East</option>
+                            <option value="WEST">West</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-12  m-b-10">
+                    <div class="row">
+                        <button class="turnLeft btn btn-primary">Turn Left</button>
+                        <button class="turnRight btn btn-primary">Turn Right</button>
+                    </div>
+                    <div class="row">
+                        <button class="move btn btn-success">Move</button>
+                        <button id="report" class="report btn btn-success">Report</button>
+                        <button class="reset btn btn-danger">Reset</button>
+                    </div>
+
+                </div>
+                <div class="text-display m-t-30 col-md-12">
+                    <h3>Output Text </h3>
+                    <span class="display-box"></span>
+                </div>
+            </div>
+            <div class=" col-md-6">
+                <div class="display  col-md-12 format-padding">
+
+                    <div class="robot-box card-custom">
+                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="../dist/compiled.dist.js"></script>
+
 
 </body>
 
