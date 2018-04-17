@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -201,8 +201,7 @@ var Board = function () {
 exports.default = Board;
 
 /***/ }),
-/* 1 */,
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -392,7 +391,7 @@ var Robot = function () {
 exports.default = Robot;
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -402,7 +401,7 @@ var _Board = __webpack_require__(0);
 
 var _Board2 = _interopRequireDefault(_Board);
 
-var _Robot = __webpack_require__(2);
+var _Robot = __webpack_require__(1);
 
 var _Robot2 = _interopRequireDefault(_Robot);
 
@@ -430,7 +429,7 @@ document.querySelector('.move').addEventListener('click', function (e) {
 
     var limit = board.withinTheLimits(x_moved, y_moved);
     displayText(limit, '', "Move");
-    drawRobot(x_moved, y_moved);
+    drawRobot(x_moved, y_moved, limit);
 });
 
 /**
@@ -474,10 +473,10 @@ function displayText(limit, robot_pos, func) {
     var type = " ";
 
     if (limit == true) {
-        txt = "Robot is within the board limits ";
+        txt = "Coordinates are within the board limits ";
         type = "text-success";
     } else {
-        txt = "Robot beyond the board limits, x & y should be less than 5 & more than 0";
+        txt = "Coordinates beyond the board limits, x & y should be between 0 and 5";
         type = "text-danger";
     }
 
@@ -489,10 +488,12 @@ function displayText(limit, robot_pos, func) {
  * @param {*} x 
  * @param {*} y 
  */
-function drawRobot(x, y) {
-    var cssHeight = 100 * y;
-    var cssWidth = 100 * x;
-    robot_box.setAttribute("style", "bottom: " + cssHeight + "px; left:" + cssWidth + "px;");
+function drawRobot(x, y, limit) {
+    if (limit) {
+        var cssHeight = 100 * y;
+        var cssWidth = 100 * x;
+        robot_box.setAttribute("style", "bottom: " + cssHeight + "px; left:" + cssWidth + "px;");
+    }
 }
 
 /**
