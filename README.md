@@ -17,7 +17,7 @@ The project is complied using webpack, dev-server and babel. You will have to in
 
 1. Create a new folder
 2. Clone the git repository (https://github.com/dspanditha/Robot_sim.git) to the above folder 
-3. go into the root folder (/Robot_sim) of the project
+3. **go into the root folder (/Robot_sim) of the project**
 
 
 Run the following commands to install dependancies
