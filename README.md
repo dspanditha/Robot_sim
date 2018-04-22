@@ -67,7 +67,7 @@ Run the following command to run the tests
 
 ## Authors
 
-Don Panditha: https://bitbucket.org/dspanditha/ 
+Don Panditha: https://github.com/dspanditha/ 
 
 ## License
 
