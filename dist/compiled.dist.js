@@ -430,6 +430,29 @@ var Robot = function () {
 
             return this.getFacing();
         }
+
+        /**
+         * display text about the robots movements
+         * @param {*} limit 
+         * @param {*} robot_pos 
+         */
+
+    }, {
+        key: "displayText",
+        value: function displayText(limit, robot_pos, func, text_display) {
+            var txt = '';
+            var type = " ";
+
+            if (limit == true) {
+                txt = "Coordinates are within the board limits ";
+                type = "text-success";
+            } else {
+                txt = "Coordinates beyond the board limits, x & y should be between 0 and 5";
+                type = "text-danger";
+            }
+
+            text_display.innerHTML += "</br><span class='" + type + "'><strong class='text-dark'> " + func + " : </strong>" + txt + robot_pos + "</span>";
+        }
     }]);
 
     return Robot;
@@ -494,7 +517,7 @@ document.querySelector('.move').addEventListener('click', function (e) {
     board.showDirectionFacing(direction_input, arrow);
 
     var limit = board.withinTheLimits(x_moved, y_moved);
-    displayText(limit, '', "Move");
+    robot.displayText(limit, '', "Move", text_display);
     board.drawRobot(x_moved, y_moved, limit, robot_box);
 });
 
@@ -506,7 +529,7 @@ document.querySelector('.report').addEventListener('click', function (e) {
     var limit = board.withinTheLimits(robot.getX_pos(), robot.getY_pos());
     var robot_pos = robot.report();
 
-    displayText(limit, robot_pos, "Report");
+    robot.displayText(limit, robot_pos, "Report", text_display);
 });
 
 /**
@@ -544,30 +567,10 @@ document.querySelector('.reset').addEventListener('click', function (e) {
 
     board.showDirectionFacing(init_dir, arrow);
     board.drawRobot(init_x, init_y, true, robot_box);
-    displayText(true, robot.report(), "Reset");
+    robot.displayText(true, robot.report(), "Reset", text_display);
 
     console.log(init_dir + ' ' + init_x + ' ' + init_y + ' ' + robot.getFacing() + ' ' + robot.getX_pos() + ' ' + robot.getY_pos());
 });
-
-/**
- * display text about the robots movements
- * @param {*} limit 
- * @param {*} robot_pos 
- */
-function displayText(limit, robot_pos, func) {
-    var txt = '';
-    var type = " ";
-
-    if (limit == true) {
-        txt = "Coordinates are within the board limits ";
-        type = "text-success";
-    } else {
-        txt = "Coordinates beyond the board limits, x & y should be between 0 and 5";
-        type = "text-danger";
-    }
-
-    text_display.innerHTML += "</br><span class='" + type + "'><strong class='text-dark'> " + func + " : </strong>" + txt + robot_pos + "</span>";
-}
 
 /***/ })
 /******/ ]);

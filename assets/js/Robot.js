@@ -77,7 +77,7 @@ class Robot {
 
     }
 
-    
+
     /**
      * return x, y, direction details
      */
@@ -143,6 +143,30 @@ class Robot {
 
 
         return this.getFacing()
+
+    }
+
+
+
+    /**
+     * display text about the robots movements
+     * @param {*} limit 
+     * @param {*} robot_pos 
+     */
+    displayText(limit, robot_pos, func, text_display) {
+        var txt = '';
+        var type = " ";
+
+        if (limit == true) {
+            txt = "Coordinates are within the board limits ";
+            type = "text-success";
+        } else {
+            txt = "Coordinates beyond the board limits, x & y should be between 0 and 5";
+            type = "text-danger";
+
+        }
+
+        text_display.innerHTML += "</br><span class='" + type + "'><strong class='text-dark'> " + func + " : </strong>" + txt + robot_pos + "</span>";
 
     }
 
