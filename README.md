@@ -23,8 +23,7 @@ The project is complied using webpack, dev-server and babel. You will have to in
 Run the following commands to install dependancies
 
 4. `npm install -g webpack`
-5. `npm install babel-core babel-loader babel-preset-es2015`
-6. `npm install -g webpack-dev-server`
+5. `npm install -g webpack-dev-server`
 
 
 ### Project build
