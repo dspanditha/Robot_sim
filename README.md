@@ -36,7 +36,7 @@ Run the following command to compile and build the project
 Then run the the following command to start up the server
  `npm run server-start`
 
-Then load the project in browser with  http://localhost:"portname shown in commandline"/src/
+Then load the project in browser with  http://localhost: "portname shown in commandline"/src/
 
  **Eg: http://localhost:8080/src/**
 
