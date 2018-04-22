@@ -191,6 +191,55 @@ var Board = function () {
 
             return valid;
         }
+
+        /**
+         * render robot square with x y  coordinates
+         * @param {*} x 
+         * @param {*} y 
+         */
+
+    }, {
+        key: "drawRobot",
+        value: function drawRobot(x, y, limit, robot_box) {
+            if (limit) {
+                var cssHeight = 100 * y;
+                var cssWidth = 100 * x;
+                robot_box.setAttribute("style", "bottom: " + cssHeight + "px; left:" + cssWidth + "px;");
+            }
+        }
+
+        /**
+         * draw the arrow to show the direction
+         * @param {*} dir 
+         * @param {*} arrow 
+         */
+
+    }, {
+        key: "showDirectionFacing",
+        value: function showDirectionFacing(dir, arrow) {
+            switch (dir) {
+                case 'NORTH':
+                    {
+                        arrow.setAttribute('class', 'fa fa-arrow-up');
+                        break;
+                    }
+                case 'SOUTH':
+                    {
+                        arrow.setAttribute('class', 'fa fa-arrow-down');
+                        break;
+                    }
+                case 'EAST':
+                    {
+                        arrow.setAttribute('class', 'fa fa-arrow-right');
+                        break;
+                    }
+                case 'WEST':
+                    {
+                        arrow.setAttribute('class', 'fa fa-arrow-left');
+                        break;
+                    }
+            }
+        }
     }]);
 
     return Board;
@@ -410,9 +459,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var board = new _Board2.default(5, 5);
 var robot = new _Robot2.default(0, 0, "NORTH");
 
+//display components
 var text_display = document.querySelector('.text-display span');
 var robot_box = document.querySelector('.robot-box');
 var arrow = document.querySelector('.robot-box i');
+
+//initial values
+var init_x = 0;
+var init_y = 0;
+var init_dir = 'NORTH';
+
+/**
+ * functionality on page load
+ */
+function init() {
+    document.querySelector('.x-cord').value = init_x;
+    document.querySelector('.y-cord').value = init_y;
+    document.querySelector('.direction').value = init_dir;
+}
+
+window.onload = init;
 
 /**
  * functionality on button move
@@ -425,11 +491,11 @@ document.querySelector('.move').addEventListener('click', function (e) {
 
     robot.move(x_moved, y_moved, direction_input);
 
-    showDirectionFacing(direction_input);
+    board.showDirectionFacing(direction_input, arrow);
 
     var limit = board.withinTheLimits(x_moved, y_moved);
     displayText(limit, '', "Move");
-    drawRobot(x_moved, y_moved, limit);
+    board.drawRobot(x_moved, y_moved, limit, robot_box);
 });
 
 /**
@@ -450,7 +516,7 @@ document.querySelector('.turnLeft').addEventListener('click', function (e) {
 
     var dir = robot.getFacing();
     var facing = robot.turnLeft();
-    showDirectionFacing(facing);
+    board.showDirectionFacing(facing, arrow);
 });
 
 /**
@@ -460,7 +526,27 @@ document.querySelector('.turnRight').addEventListener('click', function (e) {
 
     var dir = robot.getFacing();
     var facing = robot.turnRight();
-    showDirectionFacing(facing);
+    board.showDirectionFacing(facing, arrow);
+});
+
+/**
+ * functionality on button report
+ */
+document.querySelector('.reset').addEventListener('click', function (e) {
+
+    document.querySelector('.x-cord').value = init_x;
+    document.querySelector('.y-cord').value = init_y;
+    document.querySelector('.direction').value = init_dir;
+
+    robot.setX_pos(init_x);
+    robot.setY_pos(init_y);
+    robot.setFacing(init_dir);
+
+    board.showDirectionFacing(init_dir, arrow);
+    board.drawRobot(init_x, init_y, true, robot_box);
+    displayText(true, robot.report(), "Reset");
+
+    console.log(init_dir + ' ' + init_x + ' ' + init_y + ' ' + robot.getFacing() + ' ' + robot.getX_pos() + ' ' + robot.getY_pos());
 });
 
 /**
@@ -481,48 +567,6 @@ function displayText(limit, robot_pos, func) {
     }
 
     text_display.innerHTML += "</br><span class='" + type + "'><strong class='text-dark'> " + func + " : </strong>" + txt + robot_pos + "</span>";
-}
-
-/**
- * render robot square with x y  coordinates
- * @param {*} x 
- * @param {*} y 
- */
-function drawRobot(x, y, limit) {
-    if (limit) {
-        var cssHeight = 100 * y;
-        var cssWidth = 100 * x;
-        robot_box.setAttribute("style", "bottom: " + cssHeight + "px; left:" + cssWidth + "px;");
-    }
-}
-
-/**
- * draw the arrow to show the direction
- * @param {*} dir 
- */
-function showDirectionFacing(dir) {
-    switch (dir) {
-        case 'NORTH':
-            {
-                arrow.setAttribute('class', 'fa fa-arrow-up');
-                break;
-            }
-        case 'SOUTH':
-            {
-                arrow.setAttribute('class', 'fa fa-arrow-down');
-                break;
-            }
-        case 'EAST':
-            {
-                arrow.setAttribute('class', 'fa fa-arrow-right');
-                break;
-            }
-        case 'WEST':
-            {
-                arrow.setAttribute('class', 'fa fa-arrow-left');
-                break;
-            }
-    }
 }
 
 /***/ })

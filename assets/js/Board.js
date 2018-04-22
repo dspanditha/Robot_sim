@@ -44,7 +44,7 @@ class Board {
 
     }
 
-    
+
     /**
      * check validity of x cordinate input
      * @param {*} units 
@@ -103,6 +103,47 @@ class Board {
         }
 
         return valid;
+
+    }
+
+    /**
+     * render robot square with x y  coordinates
+     * @param {*} x 
+     * @param {*} y 
+     */
+    drawRobot(x, y, limit, robot_box) {
+        if (limit) {
+            var cssHeight = 100 * y;
+            var cssWidth = 100 * x;
+            robot_box.setAttribute("style", "bottom: " + cssHeight + "px; left:" + cssWidth + "px;");
+        }
+    }
+
+    /**
+     * draw the arrow to show the direction
+     * @param {*} dir 
+     * @param {*} arrow 
+     */
+    showDirectionFacing(dir, arrow) {
+        switch (dir) {
+            case 'NORTH': {
+                arrow.setAttribute('class', 'fa fa-arrow-up')
+                break;
+            }
+            case 'SOUTH': {
+                arrow.setAttribute('class', 'fa fa-arrow-down')
+                break;
+            }
+            case 'EAST': {
+                arrow.setAttribute('class', 'fa fa-arrow-right')
+                break;
+            }
+            case 'WEST': {
+                arrow.setAttribute('class', 'fa fa-arrow-left')
+                break;
+            }
+        }
+
 
     }
 
