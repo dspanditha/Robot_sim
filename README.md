@@ -3,10 +3,11 @@ The application is a simulation of a toy robot moving on a square tabletop, of d
 
 ## Prerequisites
 
-Latest [Node.js](https://nodejs.org/en/)  and [NPM](https://npmjs.org) installed. 
-The project is built on node v8.5.0 and npm v5.8.0.    
-Use node -v and npm -v to check the versions
-
+1. Latest [Node.js](https://nodejs.org/en/)  and [NPM](https://npmjs.org) installed. 
+2. The project is built on node v8.5.0 and npm v5.8.0.    
+3. Use node -v and npm -v to check the versions
+4. **The project environment is based on Linux/MacOS**
+5. 
 
 
 ## Getting Started
@@ -18,12 +19,6 @@ The project is complied using webpack, dev-server and babel. You will have to in
 1. Create a new folder
 2. Clone the git repository (https://github.com/dspanditha/Robot_sim.git) to the above folder 
 3. **go into the root folder (/Robot_sim) of the project**
-
-
-Run the following commands to install dependancies
-
-4. `npm install -g webpack`
-5. `npm install -g webpack-dev-server`
 
 
 ### Project build
@@ -42,12 +37,6 @@ Then load the project in browser with  http://localhost: "portname shown in comm
 
 
 ## Running the tests
-
-### Test setup
-
-Run the following command to install dependancies for testing
-
-`npm install -g mocha` 
 
 ### Run tests
 
