@@ -7,7 +7,7 @@ The application is a simulation of a toy robot moving on a square tabletop, of d
 2. The project is built on node v8.5.0 and npm v5.8.0.    
 3. Use node -v and npm -v to check the versions
 4. **The project environment is based on Linux/MacOS**
-5. 
+5 
 
 
 ## Getting Started
